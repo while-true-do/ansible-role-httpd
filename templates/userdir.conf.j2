@@ -1,0 +1,37 @@
+# {{ ansible_managed }}
+#
+# UserDir: The name of the directory that is appended onto a user's home
+# directory if a ~user request is received.
+#
+# The path to the end user account 'public_html' directory must be
+# accessible to the webserver userid.  This usually means that ~userid
+# must have permissions of 711, ~userid/public_html must have permissions
+# of 755, and documents contained therein must be world-readable.
+# Otherwise, the client will only receive a "403 Forbidden" message.
+#
+<IfModule mod_userdir.c>
+    #
+    # UserDir is disabled by default since it can confirm the presence
+    # of a username on the system (depending on home directory
+    # permissions).
+    #
+{% if wtd_httpd_userdir_page %}
+    UserDir {{ wtd_httpd_userdir_path }}
+    #
+    # It is strongly recommended to allow Read Only access, or disabling they
+    # userdir completely.
+    #
+</IfModule>
+<Directory "/home/*/{{ wtd_httpd_userdir_path }}">
+    AllowOverride FileInfo AuthConfig Limit Indexes
+    Options MultiViews Indexes SymLinksIfOwnerMatch IncludesNoExec
+    Require method GET POST OPTIONS
+</Directory>
+{% else %}
+    #
+    # Disabling userdir entirely is the Best Practice.
+    # Only enable it, if it is really needed.
+    #
+    UserDir disabled
+</IfModule>
+{% endif %}

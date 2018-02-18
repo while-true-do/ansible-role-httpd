@@ -1,0 +1,51 @@
+---
+# tasks/configure_httpd.yml for httpd
+- name: Configure httpd.conf
+  template:
+    src: httpd.conf.j2
+    dest: /etc/httpd/conf/httpd.conf
+    owner: root
+    group: root
+    mode: 0644
+    backup: yes
+  notify: Restart httpd
+  tags:
+    - httpd
+
+# Below you can find tasks, which care of some other config files.
+# Currently the changes are somewhat binary (on|off).
+- name: Configure autoindex.conf
+  template:
+    src: userdir.conf.j2
+    dest: /etc/httpd/conf.d/userdir.conf
+    owner: root
+    group: root
+    mode: 0644
+    backup: yes
+  notify: Restart httpd
+  tags:
+    - httpd
+
+- name: Configure userdir.conf
+  template:
+    src: userdir.conf.j2
+    dest: /etc/httpd/conf.d/userdir.conf
+    owner: root
+    group: root
+    mode: 0644
+    backup: yes
+  notify: Restart httpd
+  tags:
+    - httpd
+
+- name: Configure welcome.conf
+  template:
+    src: welcome.conf.j2
+    dest: /etc/httpd/conf.d/welcome.conf
+    owner: root
+    group: root
+    mode: 0644
+    backup: yes
+  notify: Restart httpd
+  tags:
+    - httpd

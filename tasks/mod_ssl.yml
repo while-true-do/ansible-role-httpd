@@ -1,0 +1,11 @@
+---
+# task/mod_ssl.yml for httpd
+- name: Set mod_security to {{ wtd_httpd_mod_ssl_state }}
+  package:
+    name: "{{ item }}"
+    state: "{{ wtd_httpd_mod_ssl_state }}"
+  with_items: "{{ wtd_httpd_mod_ssl_packages }}"
+  notify: Restart httpd
+  tags:
+    - httpd
+    - security

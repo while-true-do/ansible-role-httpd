@@ -1,0 +1,42 @@
+---
+# tasks/main.yml for httpd
+- name: Set httpd to "{{ wtd_httpd_state }}"
+  package:
+    name: "{{ item }}"
+    state: "{{ wtd_httpd_state }}"
+  with_items: "{{ wtd_httpd_packages }}"
+
+- name: Include httpd Configuration Tasks
+  include_tasks: configure_httpd.yml
+  when: wtd_httpd_state != "absent"
+
+- name: Include Module Configuration Tasks
+  include_tasks: configure_modules.yml
+  when: wtd_httpd_state != "absent"
+
+- name: Include mod_security Tasks
+  include_tasks: mod_security.yml
+  when:
+    - wtd_httpd_state != "absent"
+    - wtd_httpd_mod_ssl_security != "absent"
+
+- name: Include mod_ssl Tasks
+  include_tasks: mod_ssl.yml
+  when:
+    - wtd_httpd_state != "absent"
+    - wtd_httpd_mod_ssl_state != "absent"
+
+- name: Include Status Page Tasks
+  include_tasks: status_page.yml
+  when:
+    - wtd_httpd_state != "absent"
+    - wtd_httpd_status_page
+
+- name: Enable and Start httpd
+  service:
+    name: httpd
+    state: started
+    enabled: yes
+  when: wtd_httpd_state != "absent"
+  tags:
+    - httpd
