@@ -26,12 +26,6 @@
     - wtd_httpd_state != "absent"
     - wtd_httpd_mod_ssl_state != "absent"
 
-- name: Include Status Page Tasks
-  include_tasks: status_page.yml
-  when:
-    - wtd_httpd_state != "absent"
-    - wtd_httpd_status_page
-
 - name: Enable and Start httpd
   service:
     name: httpd
