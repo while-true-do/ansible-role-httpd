@@ -7,8 +7,7 @@ This role can provide (in its default settings) a Webserver, which delivers the 
 
 This role can:
 
-- Configure some Modules
-- Enabling some Best Practices for a Webserver
+- Enabling some a minimal configuration like https://wiki.apache.org/httpd/Minimal_Config
 - Setting some well known security parameter
 - Install mod_ssl and mod_security
 
@@ -34,8 +33,10 @@ git clone https://github.com/while-true-do/ansible-role-httpd.git while-true-do.
 
 Used Modules:
 
--   [module1](link)
--   [module2](link)
+-  [service_module](http://docs.ansible.com/ansible/latest/service_module.html)
+-  [template_module](http://docs.ansible.com/ansible/latest/template_module.html)
+-  [package_module](http://docs.ansible.com/ansible/latest/package_module.html)
+-  [include_tasks_module](https://docs.ansible.com/ansible/2.4/include_tasks_module.html)
 
 ## Dependencies
 
@@ -58,43 +59,26 @@ wtd_httpd_userdir_path: "public_html"
 
 # Configure httpd Configs
 ## https://httpd.apache.org/docs/2.4/configuring.html
-wtd_httpd_httpd_conf_ServerName: "{{ inventory_hostname }}"
-wtd_httpd_httpd_conf_ServerAdmin: "root@localhost"
-wtd_httpd_httpd_conf_ServerRoot: "/etc/httpd"
-wtd_httpd_httpd_conf_User: "apache"
-wtd_httpd_httpd_conf_Group: "apache"
-wtd_httpd_httpd_conf_PidFile: "run/httpd.pid"
+wtd_httpd_ServerRoot: "/etc/httpd"
+wtd_httpd_User: "apache"
+wtd_httpd_Group: "apache"
+wtd_httpd_PidFile: "run/httpd.pid"
 
-wtd_httpd_httpd_conf_ServerTokens: "prod"
-wtd_httpd_httpd_conf_ServerSignature: "off"
-wtd_httpd_httpd_conf_UseCanonicalName: "on"
-wtd_httpd_httpd_conf_AddDefaultCharset: "UTF-8"
-wtd_httpd_httpd_conf_TraceEnable: "Off"
+wtd_httpd_ServerTokens: "prod"
+wtd_httpd_ServerSignature: "off"
+wtd_httpd_UseCanonicalName: "on"
 
-wtd_httpd_httpd_conf_Listen: "127.0.0.1:80"
+wtd_httpd_Listen: "80"
 
-wtd_httpd_httpd_conf_Timeout: "20"
-wtd_httpd_httpd_conf_MaxRequestWorkers: "100"
+wtd_httpd_Timeout: "20"
+wtd_httpd_MaxRequestWorkers: "100"
 
-wtd_httpd_httpd_conf_ModulesPath: "conf.modules.d/*.conf"
+wtd_httpd_ModulesPath: "conf.modules.d/*.conf"
 
-wtd_httpd_httpd_conf_ErrorLog: "logs/error.log"
-wtd_httpd_httpd_conf_LogLevel: "warn"
-wtd_httpd_httpd_conf_LogFormatCombined: '"%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\"" combined'
-wtd_httpd_httpd_conf_LogFormatCommon: '"%h %l %u %t \"%r\" %>s %b" common'
-wtd_httpd_httpd_conf_AccessLog: "logs/access.log combined"
+wtd_httpd_ErrorLog: "logs/error.log"
+wtd_httpd_LogLevel: "warn"
 
-wtd_httpd_httpd_conf_DocumentRoot: "/var/www/html"
-
-wtd_httpd_httpd_conf_ConfigPath: "conf.d/*.conf"
-
-# Configure Default Modules
-## Built-in Modules
-## https://httpd.apache.org/docs/2.4/mod/mod_cache.html
-wtd_httpd_mod_cache: True
-wtd_httpd_mod_autoindex: False
-wtd_httpd_mod_include: False
-wtd_httpd_mod_info: False
+wtd_httpd_ConfigPath: "conf.d/*.conf"
 
 # Install / Configure Additional Modules
 ## http://www.modssl.org/
@@ -123,7 +107,7 @@ You can enable the server to listen on all addresses and provide a welcome page 
 ```yaml
 - hosts: servers 
   roles:
-    - { role: while-true-do.httpd, wtd_httpd_httpd_conf_listen: "*:80", wtd_httpd_welcome_page: True }
+    - { role: while-true-do.httpd, wtd_httpd_listen: "*:80", wtd_httpd_welcome_page: True }
 ```
 
 ## Testing
