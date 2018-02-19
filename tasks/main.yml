@@ -10,10 +10,6 @@
   include_tasks: configure_httpd.yml
   when: wtd_httpd_state != "absent"
 
-- name: Include Module Configuration Tasks
-  include_tasks: configure_modules.yml
-  when: wtd_httpd_state != "absent"
-
 - name: Include mod_security Tasks
   include_tasks: mod_security.yml
   when:

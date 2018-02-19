@@ -1,7 +1,6 @@
 ---
-# Only default modules are confgured here.
+# Only some default modules are confgured here.
 # Additional modules can found in <modulename>.yml
-
 - name: Configure Modules 00-base.conf
   template:
     src: 00-base.conf.j2

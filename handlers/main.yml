@@ -1,10 +1,5 @@
 ---
 # handlers/main.yml for httpd
-- name: Reload httpd
-  service:
-    name: httpd
-    state: reloaded
-
 - name: Restart httpd
   service:
     name: httpd

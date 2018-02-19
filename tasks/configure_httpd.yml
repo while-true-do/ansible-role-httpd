@@ -16,8 +16,8 @@
 # Currently the changes are somewhat binary (on|off).
 - name: Configure autoindex.conf
   template:
-    src: userdir.conf.j2
-    dest: /etc/httpd/conf.d/userdir.conf
+    src: autoindex.conf.j2
+    dest: /etc/httpd/conf.d/autoindex.conf
     owner: root
     group: root
     mode: 0644

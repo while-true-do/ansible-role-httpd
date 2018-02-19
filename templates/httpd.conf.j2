@@ -2,39 +2,25 @@
 # This is a very minimal configuration. It is recommended to have a dedicated
 # config file per VirtualHost in conf.d/*
 #
-ServerName              {{ wtd_httpd_httpd_conf_ServerName }}
-ServerAdmin             {{ wtd_httpd_httpd_conf_ServerAdmin }}
-ServerRoot              {{ wtd_httpd_httpd_conf_ServerRoot }}
-User                    {{ wtd_httpd_httpd_conf_User }}
-Group                   {{ wtd_httpd_httpd_conf_Group }}
-PidFile                 {{ wtd_httpd_httpd_conf_PidFile }}
+ServerRoot              {{ wtd_httpd_ServerRoot }}
+User                    {{ wtd_httpd_User }}
+Group                   {{ wtd_httpd_Group }}
+PidFile                 {{ wtd_httpd_PidFile }}
 
-ServerTokens            {{ wtd_httpd_httpd_conf_ServerTokens }}
-UseCanonicalName        {{ wtd_httpd_httpd_conf_UseCanonicalName }}
-ServerSignature         {{ wtd_httpd_httpd_conf_ServerSignature }}
-AddDefaultCharset       {{ wtd_httpd_httpd_conf_AddDefaultCharset }}
-TraceEnable             {{ wtd_httpd_httpd_conf_TraceEnable }}
+ServerTokens            {{ wtd_httpd_ServerTokens }}
+UseCanonicalName        {{ wtd_httpd_UseCanonicalName }}
+ServerSignature         {{ wtd_httpd_ServerSignature }}
 
-Listen                  {{ wtd_httpd_httpd_conf_Listen }}
+Listen                  {{ wtd_httpd_Listen }}
 
-Timeout                 {{ wtd_httpd_httpd_conf_Timeout }}
-MaxRequestWorkers       {{ wtd_httpd_httpd_conf_MaxRequestWorkers }}
+Timeout                 {{ wtd_httpd_Timeout }}
+MaxRequestWorkers       {{ wtd_httpd_MaxRequestWorkers }}
 
 # Load Modules
-Include                 {{ wtd_httpd_httpd_conf_ModulesPath }}
+Include                 {{ wtd_httpd_ModulesPath }}
 
-ErrorLog                {{ wtd_httpd_httpd_conf_ErrorLog }}
-LogLevel                {{ wtd_httpd_httpd_conf_LogLevel }}
-
-<IfModule log_config_module>
-  LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\"" combined
-  LogFormat "%h %l %u %t \"%r\" %>s %b" common
-</IfModule>
-
-CustomLog               {{ wtd_httpd_httpd_conf_AccessLog }}
-
-#EnableMMAP off
-EnableSendfile on
+ErrorLog                {{ wtd_httpd_ErrorLog }}
+LogLevel                {{ wtd_httpd_LogLevel }}
 
 <IfModule mime_module>
     TypesConfig /etc/mime.types
@@ -44,25 +30,11 @@ EnableSendfile on
     MIMEMagicFile conf/magic
 </IfModule>
 
-# Below you can find the configuration for the default VirtualHost.
-# It should be as minimal as possible.
-DocumentRoot            {{ wtd_httpd_httpd_conf_DocumentRoot }}
-
+# Never change this block
 <Directory />
     AllowOverride none
     Require all denied
 </Directory>
 
-# The following lines prevent .htaccess and .htpasswd files from being 
-# viewed by Web clients. 
-<Files ".ht*">
-  Require all denied
-</Files>
-
-<Directory {{ wtd_httpd_httpd_conf_DocumentRoot }}>
-  Require all granted
-  Options None
-</Directory>
-
 # Load additional config files, if any.
-IncludeOptional {{ wtd_httpd_httpd_conf_ConfigPath }}
+IncludeOptional {{ wtd_httpd_ConfigPath }}
