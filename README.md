@@ -17,16 +17,16 @@ This role can:
 
 ## Installation
 
-Install from [Ansible Galaxy](https://galaxy.ansible.com/while-true-do/httpd)
+Install from [Ansible Galaxy](https://galaxy.ansible.com/while_true_do/httpd)
 
 ```
-ansible-galaxy install while-true-do.httpd
+ansible-galaxy install while_true_do.httpd
 ```
 
 Install from [Github](https://github.com/while-true-do/ansible-role-httpd)
 
 ```
-git clone https://github.com/while-true-do/ansible-role-httpd.git while-true-do.httpd
+git clone https://github.com/while-true-do/ansible-role-httpd.git while_true_do.httpd
 ```
 
 ## Requirements
@@ -97,7 +97,7 @@ Simple Example:
 ```yaml
 - hosts: servers 
   roles:
-    - { role: while-true-do.httpd }
+    - { role: while_true_do.httpd }
 ```
 
 Advanced Example:
@@ -107,7 +107,7 @@ You can enable the server to listen on all addresses and provide a welcome page 
 ```yaml
 - hosts: servers 
   roles:
-    - { role: while-true-do.httpd, wtd_httpd_listen: "*:80", wtd_httpd_welcome_page: True }
+    - { role: while_true_do.httpd, wtd_httpd_listen: "*:80", wtd_httpd_welcome_page: True }
 ```
 
 ## Testing
