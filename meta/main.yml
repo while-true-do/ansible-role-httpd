@@ -1,6 +1,7 @@
 dependencies: []
 
 galaxy_info:
+  role_name: httpd
   author: while-true-do.org
   description: A role to install and configure Apache HTTP Server.
   company: while-true-do.org
