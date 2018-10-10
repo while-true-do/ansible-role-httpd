@@ -14,7 +14,7 @@
   include_tasks: mod_security.yml
   when:
     - wtd_httpd_state != "absent"
-    - wtd_httpd_mod_ssl_security != "absent"
+    - wtd_httpd_mod_security_state != "absent"
 
 - name: Include mod_ssl Tasks
   include_tasks: mod_ssl.yml
