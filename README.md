@@ -11,6 +11,11 @@ This role can:
 - Setting some well known security parameter
 - Install mod_ssl and mod_security
 
+SSL config is derived from:
+
+- https://cipherli.st/
+- https://wiki.mozilla.org/Security/TLS_Configurations#Apache
+
 ## Motivation
 
 [Apache HTTP Server](https://httpd.apache.org/) is used for multiple websites. It is the approach to provide a secure, efficient and extensible server that provides HTTP services in sync with the current HTTP standards.
