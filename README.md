@@ -36,7 +36,7 @@ Used Modules:
 -  [service_module](http://docs.ansible.com/ansible/latest/service_module.html)
 -  [template_module](http://docs.ansible.com/ansible/latest/template_module.html)
 -  [package_module](http://docs.ansible.com/ansible/latest/package_module.html)
--  [include_tasks_module](https://docs.ansible.com/ansible/2.4/include_tasks_module.html)
+-  [include_tasks_module](https://docs.ansible.com/ansible/latest/include_tasks_module.html)
 
 ## Dependencies
 
