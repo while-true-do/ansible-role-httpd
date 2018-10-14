@@ -11,7 +11,7 @@ This role can:
 - Setting some well known security parameter
 - Install mod_ssl and mod_security
 
-SSL config is derived from:
+SSL configuration is derived from:
 
 - https://cipherli.st/
 - https://wiki.mozilla.org/Security/TLS_Configurations#Apache
