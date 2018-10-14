@@ -46,7 +46,7 @@ None.
 
 ```yaml
 # defaults/main.yml for httpd
-# 
+#
 # You can set the state to ["present"|"absent"|"latest"]
 wtd_httpd_state: "present"
 wtd_httpd_packages: "httpd"
@@ -95,7 +95,7 @@ wtd_httpd_mod_security_packages: "mod_security"
 Simple Example:
 
 ```yaml
-- hosts: servers 
+- hosts: servers
   roles:
     - { role: while_true_do.httpd }
 ```
@@ -105,7 +105,7 @@ Advanced Example:
 You can enable the server to listen on all addresses and provide a welcome page this way.
 
 ```yaml
-- hosts: servers 
+- hosts: servers
   roles:
     - { role: while_true_do.httpd, wtd_httpd_listen: "*:80", wtd_httpd_welcome_page: True }
 ```
@@ -124,7 +124,7 @@ bash ./tests/test-ansible.sh
 ## Contribute / Bugs
 
 Thank you so much for considering to contribute. Every contribution helps us.
-We are really happy, when somebody is joining the hard work. Please have a look 
+We are really happy, when somebody is joining the hard work. Please have a look
 at the links first.
 
 -   [Code of Conduct](./docs/CODE_OF_CONDUCT.md)
