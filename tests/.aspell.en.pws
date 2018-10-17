@@ -3,9 +3,6 @@ ansible
 Ansible
 aspell
 Github
-html
-HTML
-http
 httpd
 init
 passlib
@@ -13,10 +10,6 @@ reachability
 refactoring
 screenshots
 ssl
-SSL
-VirtualHost
 Webserver
 wtd
-www
-WWW
 yml

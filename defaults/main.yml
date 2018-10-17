@@ -1,6 +1,6 @@
 ---
 # defaults/main.yml for httpd
-# 
+#
 # You can set the state to ["present"|"absent"|"latest"]
 wtd_httpd_state: "present"
 wtd_httpd_packages: "httpd"
@@ -38,6 +38,8 @@ wtd_httpd_ConfigPath: "conf.d/*.conf"
 ## http://www.modssl.org/
 wtd_httpd_mod_ssl_state: "present"
 wtd_httpd_mod_ssl_packages: "mod_ssl"
+## Choose ["default"|"secure"]
+wtd_httpd_mod_ssl_config: "secure"
 
 ## https://modsecurity.org/
 wtd_httpd_mod_security_state: "present"
